@@ -2,7 +2,7 @@ from pages.dashboard_page import DashboardPage
 from pages.login_page import LoginPage
 import time
 
-def test_dashboard_page_heading_displayed(driver, base_url, credentials):
+def test_dashboard_page_heading_displayed(driver, base_url, credentials, screenshot):
   login_page = LoginPage(driver)
   dashboard_page = DashboardPage(driver)
   login_page.opens(base_url)
@@ -59,7 +59,7 @@ def test_employee_distribution_by_location_section_displayed(driver, base_url, c
   login_page.login(credentials["username"], credentials["password"])
   assert dashboard_page.is_employee_distribution_by_location_section_displayed(), "Employee distribution by location heading is not displayed"
 
-def test_search_result_displayed(driver, base_url, credentials):
+def test_search_result_displayed(driver, base_url, credentials, screenshot):
   login_page = LoginPage(driver)
   dashboard_page = DashboardPage(driver)
   login_page.opens(base_url)

@@ -3,7 +3,7 @@ import time
 from pages.dashboard_page import DashboardPage
 from pages.login_page import LoginPage
 
-def test_verify_login_page_heading(driver, base_url):
+def test_verify_login_page_heading(driver, base_url, screenshot):
   login_page = LoginPage(driver)
   login_page.opens(base_url)
   assert login_page.is_login_heading_displayed(), "Login page heading is not displayed"
