@@ -3,7 +3,7 @@ import time
 import pytest
 
 from pages.login_page import LoginPage
-from pages.About import AboutPage
+from pages.about_page import AboutPage
 
 @pytest.mark.skip(reason="skip test due to unable to locate about popup heading")
 def test_about_popup_heading(driver, base_url, credentials, screenshot):
