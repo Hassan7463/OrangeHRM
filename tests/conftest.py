@@ -2,12 +2,16 @@ from selenium import webdriver
 import pytest
 import os
 from dotenv import load_dotenv
+from selenium.webdriver.chrome.options import Options
 
 load_dotenv()
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
+    options = Options()
+    options.add_argument("headless")
+    # driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     yield driver
     driver.quit()
