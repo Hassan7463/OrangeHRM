@@ -9,9 +9,14 @@ class LogoutPage(BasePage):
     self.user_dropdown_header = (By.XPATH, "//p[@class='oxd-userdropdown-name']") # Ask
     self.logout_header_menu = (By.XPATH, "//a[normalize-space()='Logout']")
 
-  def navigate_to_logout(self):
+  def click_user_dropdown(self):
     if self.is_displayed(self.user_dropdown_header):
       self.click(self.user_dropdown_header)
 
+  def click_on_logout(self):
     if self.is_enabled(self.logout_header_menu):
       self.click(self.logout_header_menu)
+
+  def logout(self):
+    self.click_user_dropdown()
+    self.click_on_logout()

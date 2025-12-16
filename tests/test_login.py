@@ -21,9 +21,7 @@ def test_login_with_invalid_credentials(driver, base_url):
     login_page.login("admin", "admin")
     assert login_page.is_invalid_credentials_message_displayed(), "Credentials are valid."
 
-def test_login_with_valid_credentials(driver, base_url, credentials):
+def test_login_with_valid_credentials(driver, base_url, login_logout):
   login_page = LoginPage(driver)
   dashboard_page = DashboardPage(driver)
-  login_page.opens(base_url)
-  login_page.login(credentials["username"], credentials["password"])
   assert dashboard_page.is_dashboard_heading_displayed(), "Dashboard Heading is not displayed"

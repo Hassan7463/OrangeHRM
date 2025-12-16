@@ -12,6 +12,7 @@ def test_about_popup_heading(driver, base_url, credentials, screenshot):
   about_page = AboutPage(driver)
   login_page.opens(base_url)
   login_page.login(credentials["username"], credentials["password"])
-  about_page.navigate_to_about_page()
+  about_page.click_on_username_dropdown()
+  about_page.click_on_about()
   actual_about_popup_heading = about_page.about_popup_heading
   assert expected_about_popup_heading == actual_about_popup_heading, "About popup heading is not displayed!"

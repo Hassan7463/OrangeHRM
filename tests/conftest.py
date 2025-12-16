@@ -4,6 +4,9 @@ import os
 from dotenv import load_dotenv
 from selenium.webdriver.chrome.options import Options
 from utils.screenshot_utility import ScreenshotUtility
+from pages.login_page import LoginPage
+from pages.logout_page import LogoutPage
+from selenium.common.exceptions import NoSuchElementException
 
 load_dotenv()
 
@@ -60,3 +63,16 @@ def pytest_runtest_makereport(item, call):
     outcome = yield
     rep = outcome.get_result()
     setattr(item, f"rep_{rep.when}", rep)
+
+
+@pytest.fixture()
+def login_logout(driver, base_url, credentials):
+  login_page = LoginPage(driver)
+  logout_page = LogoutPage(driver)
+  login_page.opens(base_url)
+  login_page.login(credentials["username"], credentials["password"])
+  yield login_page
+  try:
+    logout_page.logout()
+  except NoSuchElementException:
+    pass
