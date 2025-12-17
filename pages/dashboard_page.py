@@ -92,9 +92,9 @@ class DashboardPage(BasePage):
       self.send_keys(self.search_field_locator, "p")
 
   def get_text_after_search(self):
-    if self.is_displayed(self.search_field_locator):
-      # search_result = [self.filtered_text]
-      for item in self.filtered_text:
-          result = self.get_text(item)
-          search_result.append(result)
-  print(search_result)
+    expected_search_list = ['PIM', 'Performance']
+    actual_search_list = self.get_texts(self.filtered_text)
+    if expected_search_list == actual_search_list:
+      return True
+    else:
+      return False

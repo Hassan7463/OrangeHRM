@@ -4,9 +4,8 @@ from pages.login_page import LoginPage
 from pages.menus import Menus
 from pages.pim_page import PIM
 
-@pytest.mark.skip(reason="Getting error")
 def test_pim_page_heading(driver, base_url, login_logout):
-    expected_pim_page_heading = "Employee Information"
+    expected_pim_page_heading = "PIM"
     menus = Menus(driver)
     pim_page = PIM(driver)
     menus.click_on_pim_menu()
