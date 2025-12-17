@@ -2,17 +2,14 @@ import time
 
 import pytest
 
-from pages.login_page import LoginPage
 from pages.about_page import AboutPage
 
-@pytest.mark.skip(reason="skip test due to unable to locate about popup heading")
-def test_about_popup_heading(driver, base_url, credentials, screenshot):
+@pytest.mark.skip(reason="This test will fail")
+def test_about_popup_heading(driver, base_url, login_logout, screenshot):
   expected_about_popup_heading = "About"
-  login_page = LoginPage(driver)
   about_page = AboutPage(driver)
-  login_page.opens(base_url)
-  login_page.login(credentials["username"], credentials["password"])
   about_page.click_on_username_dropdown()
+  time.sleep(5)
   about_page.click_on_about()
-  actual_about_popup_heading = about_page.about_popup_heading
+  actual_about_popup_heading = about_page.verify_about_popup_heading()
   assert expected_about_popup_heading == actual_about_popup_heading, "About popup heading is not displayed!"

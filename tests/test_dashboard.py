@@ -36,11 +36,8 @@ def test_employee_distribution_by_location_section_displayed(driver, base_url, l
   dashboard_page = DashboardPage(driver)
   assert dashboard_page.is_employee_distribution_by_location_section_displayed(), "Employee distribution by location heading is not displayed"
 
-@pytest.mark.skip(reason="Not implemented yet")
 def test_search_result_displayed(driver, base_url, login_logout):
   dashboard_page = DashboardPage(driver)
   dashboard_page.click_on_search_field()
   dashboard_page.enter_value_in_search_field()
-  time.sleep(5)
-  dashboard_page.get_text_after_search()
-  # assert dashboard_page.is_employee_distribution_by_location_section_displayed(), "Employee distribution by location heading is not displayed"
+  assert dashboard_page.get_text_after_search(), "Search result is not matched!"
