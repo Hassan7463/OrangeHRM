@@ -36,9 +36,10 @@ def driver(pytestconfig):
     browser = pytestconfig.getoption("--browser").lower()
 
     if browser == "chrome":
-        chrome_options = ChromeOptions()
-        chrome_options.add_argument("--headless")   # remove if you want visible browser
-        driver = webdriver.Chrome(options=chrome_options)
+        # chrome_options = ChromeOptions()
+        # chrome_options.add_argument("--headless")   # remove if you want visible browser
+        # driver = webdriver.Chrome(options=chrome_options)
+        driver = webdriver.Chrome()
 
     elif browser == "firefox":
         import tempfile
